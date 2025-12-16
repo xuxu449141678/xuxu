@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点状图生成器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="logo.svg" alt="Logo" class="logo">
+                <h1>XU.点状图生成器</h1>
+            </div>
+            <p>将您的照片转换为艺术点状图</p>
+        </header>
+        
+        <main>
+            <div class="top-controls">
+                <div class="upload-section">
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <label for="imageUpload" class="upload-btn">
+                        <span>选择照片</span>
+                    </label>
+                </div>
+                
+                <div class="export-section">
+                    <div class="format-buttons">
+                        <button class="format-btn active" data-format="png">PNG格式</button>
+                        <button class="format-btn" data-format="svg">SVG格式</button>
+                    </div>
+                    <button id="exportBtn" class="export-btn">导出图像</button>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+            </div>
+            
+            <div class="controls-section">
+                <h2>调节参数</h2>
+                
+                <div class="control-group">
+                    <label for="dotSize">点大小: <span id="dotSizeValue">5</span></label>
+                    <input type="range" id="dotSize" min="1" max="20" value="5" step="0.5">
+                </div>
+                
+                <div class="control-group">
+                    <label for="dotSpacing">点间距: <span id="dotSpacingValue">10</span>px</label>
+                    <input type="range" id="dotSpacing" min="2" max="30" value="10" step="1">
+                </div>
+                
+                <div class="control-group">
+                    <label for="threshold">阈值: <span id="thresholdValue">50</span>%</label>
+                    <input type="range" id="threshold" min="0" max="100" value="50" step="5">
+                </div>
+                
+                <div class="control-group">
+                    <button id="reverseBtn" class="reverse-btn">反向生成</button>
+                </div>
+                
+                <div class="control-group">
+                    <label for="dotColor">点颜色:</label>
+                    <input type="color" id="dotColor" value="#ffffff">
+                </div>
+                
+                <div class="control-group">
+                    <label for="backgroundColor">背景颜色:</label>
+                    <input type="color" id="backgroundColor" value="#000000">
+                </div>
+                
+                <div class="control-group">
+                    <label>点形状:</label>
+                    <div class="shape-buttons">
+                        <button class="shape-btn active" data-shape="circle" title="圆形">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="10" />
+                            </svg>
+                        </button>
+                        <button class="shape-btn" data-shape="square" title="方形">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="4" y="4" width="16" height="16" />
+                            </svg>
+                        </button>
+                        <button class="shape-btn" data-shape="triangle" title="三角形">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="12,2 22,22 2,22" />
+                            </svg>
+                        </button>
+                        <button class="shape-btn" data-shape="pentagon" title="五角星">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,2L15.09,8.26L22,9.27L17,14.14L18.18,21.02L12,17.77L5.82,21.02L7,14.14L2,9.27L8.91,8.26L12,2Z" />
+                            </svg>
+                        </button>
+                        <button class="shape-btn" data-shape="hexagon" title="六边形">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,2.5L21.5,8.5L21.5,15.5L12,21.5L2.5,15.5L2.5,8.5L12,2.5Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <button class="effect-btn" id="randomSizeBtn">大小随机</button>
+                    <button class="effect-btn" id="randomRotationBtn">随机旋转</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
